@@ -1,8 +1,6 @@
-import 'package:cat_aplication/pages/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:cat_aplication/pages/details_screen.dart';
-import 'package:cat_aplication/models/cats_models.dart';
-import 'package:provider/provider.dart';
+
+import 'package:cat_aplication/pages/home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,7 +9,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Scaffold(
-        body: _GatitoCard(),
+      body: _GatitoCard(),
       ),
     );
   }
@@ -61,7 +59,7 @@ class _TarjetaTitulo extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: const Text(
-        "Tocame",
+        "Touch me",
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
       ),
     );

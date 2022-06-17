@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cat_aplication/services/cat_service.dart';
 import 'package:cat_aplication/widgets/cat_preview.dart';
-import 'package:cat_aplication/services/search_service.dart';
+import 'package:cat_aplication/search/search_service.dart';
 import 'package:provider/provider.dart';
 
 const image2 = Image(
