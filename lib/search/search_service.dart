@@ -50,7 +50,8 @@ class CatSearchDelegate extends SearchDelegate {
     if (query.isEmpty) {
       return _emptyContainer();
     }
-    // return _emptyContainer();
+     return _emptyContainer();
+    /*
     final breedsService = Provider.of<BreedsService>(context, listen: false);
     breedsService.getSuggestionsByQuery(query);
 
@@ -68,6 +69,7 @@ class CatSearchDelegate extends SearchDelegate {
         return Container(child: _CatItem(breed));
       },
     );
+    */
   }
 }
 
