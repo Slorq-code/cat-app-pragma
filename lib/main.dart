@@ -1,8 +1,8 @@
-import 'package:cat_aplication/pages/details_screen.dart';
+import 'package:flutter/material.dart';
+
 import 'package:cat_aplication/pages/home_screen.dart';
 import 'package:cat_aplication/pages/splash_screen.dart';
 import 'package:cat_aplication/services/cat_service.dart';
-import 'package:flutter/material.dart';
 import 'package:cat_aplication/theme/theme.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         // ignore: unnecessary_new
-        ChangeNotifierProvider(create: (_)=> new CatsService() ),
+        ChangeNotifierProvider(create: (_)=> CatsService(), lazy: false),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

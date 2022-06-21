@@ -7,9 +7,15 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (contet) => const HomeScreen()));
+      },
       child: Scaffold(
-      body: _GatitoCard(),
+        body: Center(
+          child: _GatitoCard(),
+        ),
       ),
     );
   }
@@ -18,14 +24,19 @@ class SplashScreen extends StatelessWidget {
 class _GatitoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        const Divider(height: 50),
-        _TarjetaTitulo(),
-        _TarjetaImagen(),
-        const SizedBox(height: 10),
-        const Divider(height: 50),
-      ],
+    return SizedBox(
+      height: 450,
+      width: 450,
+      child: Column(
+        children: <Widget>[
+        // const Divider(height: 5),
+          _TarjetaTitulo(),
+          _SubTarjetaTitulo(),
+          _TarjetaImagen(),
+          const SizedBox(height: 10),
+         // const Divider(height: 5),
+        ],
+      ),
     );
   }
 }
@@ -33,20 +44,22 @@ class _GatitoCard extends StatelessWidget {
 class _TarjetaImagen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (contet) => const HomeScreen()));
-      },
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
-          child: Container(
-              child: const Image(
-            image: AssetImage('assets/img/splash.gif'),
-          )),
+    Future.delayed(const Duration(milliseconds: 10000), () {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (contet) => const HomeScreen()));
+    });
+
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      child: const ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(120),
+          bottomRight: Radius.circular(120),
+          bottomLeft: Radius.circular(120),
+          topRight: Radius.circular(120),
+        ),
+        child: Image(
+          image: AssetImage('assets/img/splash2.gif'),
         ),
       ),
     );
@@ -59,8 +72,21 @@ class _TarjetaTitulo extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: const Text(
-        "Touch me",
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+        "Welcome to minino app",
+        style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
+      ),
+    );
+  }
+}
+
+class _SubTarjetaTitulo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: const Text(
+        "loading mimino information...",
+        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
       ),
     );
   }

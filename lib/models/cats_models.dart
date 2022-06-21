@@ -97,9 +97,9 @@ class Cat {
         weight: Weight.fromJson(json["weight"]),
         id: json["id"],
         name: json["name"],
-        cfaUrl: json["cfa_url"] == null ? null : json["cfa_url"],
-        vetstreetUrl: json["vetstreet_url"] == null ? null : json["vetstreet_url"],
-        vcahospitalsUrl: json["vcahospitals_url"] == null ? null : json["vcahospitals_url"],
+        cfaUrl: json["cfa_url"],
+        vetstreetUrl: json["vetstreet_url"],
+        vcahospitalsUrl: json["vcahospitals_url"],
         temperament: json["temperament"],
         origin: json["origin"],
         countryCodes: json["country_codes"],
@@ -107,8 +107,8 @@ class Cat {
         description: json["description"],
         lifeSpan: json["life_span"],
         indoor: json["indoor"],
-        lap: json["lap"] == null ? null : json["lap"],
-        altNames: json["alt_names"] == null ? null : json["alt_names"],
+        lap: json["lap"],
+        altNames: json["alt_names"],
         adaptability: json["adaptability"],
         affectionLevel: json["affection_level"],
         childFriendly: json["child_friendly"],
@@ -128,21 +128,21 @@ class Cat {
         rex: json["rex"],
         suppressedTail: json["suppressed_tail"],
         shortLegs: json["short_legs"],
-        wikipediaUrl: json["wikipedia_url"] == null ? null : json["wikipedia_url"],
+        wikipediaUrl: json["wikipedia_url"],
         hypoallergenic: json["hypoallergenic"],
-        referenceImageId: json["reference_image_id"] == null ? null : json["reference_image_id"],
+        referenceImageId: json["reference_image_id"],
         image: json["image"] == null ? null : Images.fromJson(json["image"]),
-        catFriendly: json["cat_friendly"] == null ? null : json["cat_friendly"],
-        bidability: json["bidability"] == null ? null : json["bidability"],
+        catFriendly: json["cat_friendly"],
+        bidability: json["bidability"],
     );
 
     Map<String, dynamic> toJson() => {
         "weight": weight.toJson(),
         "id": id,
         "name": name,
-        "cfa_url": cfaUrl == null ? null : cfaUrl,
-        "vetstreet_url": vetstreetUrl == null ? null : vetstreetUrl,
-        "vcahospitals_url": vcahospitalsUrl == null ? null : vcahospitalsUrl,
+        "cfa_url": cfaUrl,
+        "vetstreet_url": vetstreetUrl,
+        "vcahospitals_url": vcahospitalsUrl,
         "temperament": temperament,
         "origin": origin,
         "country_codes": countryCodes,
@@ -150,8 +150,8 @@ class Cat {
         "description": description,
         "life_span": lifeSpan,
         "indoor": indoor,
-        "lap": lap == null ? null : lap,
-        "alt_names": altNames == null ? null : altNames,
+        "lap": lap,
+        "alt_names": altNames,
         "adaptability": adaptability,
         "affection_level": affectionLevel,
         "child_friendly": childFriendly,
@@ -171,12 +171,13 @@ class Cat {
         "rex": rex,
         "suppressed_tail": suppressedTail,
         "short_legs": shortLegs,
-        "wikipedia_url": wikipediaUrl == null ? null : wikipediaUrl,
+        "wikipedia_url": wikipediaUrl,
         "hypoallergenic": hypoallergenic,
-        "reference_image_id": referenceImageId == null ? null : referenceImageId,
+        "reference_image_id": referenceImageId,
+        // ignore: prefer_null_aware_operators
         "image": image == null ? null : image?.toJson(),
-        "cat_friendly": catFriendly == null ? null : catFriendly,
-        "bidability": bidability == null ? null : bidability,
+        "cat_friendly": catFriendly,
+        "bidability": bidability,
     };
 }
 
@@ -194,17 +195,17 @@ class Images {
     String? url;
 
     factory Images.fromJson(Map<String, dynamic> json) => Images(
-        id: json["id"] == null ? null : json["id"],
-        width: json["width"] == null ? null : json["width"],
-        height: json["height"] == null ? null : json["height"],
-        url: json["url"] == null ? null : json["url"],
+        id: json["id"],
+        width: json["width"],
+        height: json["height"],
+        url: json["url"],
     );
 
     Map<String, dynamic> toJson() => {
-        "id": id == null ? null : id,
-        "width": width == null ? null : width,
-        "height": height == null ? null : height,
-        "url": url == null ? null : url,
+        "id": id,
+        "width": width,
+        "height": height,
+        "url": url,
     };
 }
 

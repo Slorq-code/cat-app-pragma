@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:cat_aplication/services/cat_service.dart';
+import 'package:cat_aplication/search/search.dart';
 import 'package:cat_aplication/search/search_response.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CatSearchDelegate extends SearchDelegate {
   @override
@@ -28,16 +29,17 @@ class CatSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return const Text("build...");
+    return const Text("searching michi...");
   }
 
   Widget _emptyContainer() {
+    // ignore: avoid_unnecessary_containers
     return Container(
       child: const Center(
         child: Icon(
           Icons.pest_control_rodent,
           color: Colors.black38,
-          size: 130,
+          size: 150,
         ),
       ),
     );
@@ -48,26 +50,32 @@ class CatSearchDelegate extends SearchDelegate {
     if (query.isEmpty) {
       return _emptyContainer();
     }
-/*
-      final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
-      moviesProvider.getSuggestionsByQuery( query );
-*/
+    return _emptyContainer();
+    /*
+    final breedsService = Provider.of<BreedsService>(context, listen: false);
+      breedsService.getSuggestionsByQuery( query );
+
     return StreamBuilder(
-        builder: (_, AsyncSnapshot<List<Breeds>> snapshot) {
-        if (!snapshot.hasData) return _emptyContainer();
+        stream: breedsService.suggestionStream,
+        builder: ( _, AsyncSnapshot<List<Breed>> snapshot) {
+          
+          if( !snapshot.hasData ) return _emptyContainer();
 
-        final breed = snapshot.data!;
+          final breed = snapshot.data!;
 
-        return ListView.builder(
+          return ListView.builder(
             itemCount: breed.length,
-            itemBuilder: (_, int index) => _CatItem(breed[index]));
-      },
-    );
+            itemBuilder: ( _, int index ) => _CatItem( breed[index])
+          );
+        },
+      );
+     */
   }
 }
 
 class _CatItem extends StatelessWidget {
-  final Breeds breed;
+  // ignore: prefer_typing_uninitialized_variables
+  final breed;
 
   const _CatItem(this.breed);
 
@@ -92,3 +100,12 @@ class _CatItem extends StatelessWidget {
     );
   }
 }
+
+
+/*
+
+AYUAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+
+
+*/ 

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../models/cats_models.dart';
-import '../theme/theme.dart';
-import 'package:flutter/material.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({Key? key, required this.minino}) : super(key: key);
@@ -244,73 +242,3 @@ class _TarjetaPuntuacionesInteligent extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-/*
-
-class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({Key? key, required this.minino}) : super(key: key);
-
-  final Cat minino;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Your cat is ${minino.name}"),
-          elevation: 0,
-        ),
-        body: _GatitoCard(minino: minino));
-  }
-}
-
-class _GatitoCard extends StatelessWidget {
-  final Cat minino;
-
-  const _GatitoCard({required this.minino});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        _TarjetaImagen(minino),
-        const SizedBox(height: 10),
-        const Divider(),
-      ],
-    );
-  }
-}
-
-class _TarjetaImagen extends StatelessWidget {
-  final Cat minino;
-
-  const _TarjetaImagen(this.minino);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
-          child: Container(
-              child: (minino.image != null)
-                  ? FadeInImage(
-                      placeholder: const AssetImage('assets/img/giphy.gif'),
-                      image: NetworkImage("${minino.image?.url}"))
-                  : const Image(
-                      image: AssetImage('assets/img/no-image.png'),
-                    )),
-        ),
-      ),
-    );
-  }
-}
-*/
