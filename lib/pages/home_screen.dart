@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:cat_aplication/search/search.dart';
 import 'package:cat_aplication/services/cat_service.dart';
 import 'package:cat_aplication/widgets/cat_preview.dart';
 import 'package:cat_aplication/search/search_service.dart';

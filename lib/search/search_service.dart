@@ -50,26 +50,24 @@ class CatSearchDelegate extends SearchDelegate {
     if (query.isEmpty) {
       return _emptyContainer();
     }
-    return _emptyContainer();
-    /*
+    // return _emptyContainer();
     final breedsService = Provider.of<BreedsService>(context, listen: false);
-      breedsService.getSuggestionsByQuery( query );
+    breedsService.getSuggestionsByQuery(query);
 
     return StreamBuilder(
-        stream: breedsService.suggestionStream,
-        builder: ( _, AsyncSnapshot<List<Breed>> snapshot) {
-          
-          if( !snapshot.hasData ) return _emptyContainer();
+      stream: breedsService.suggestionStream,
+      builder: (_, AsyncSnapshot<List<Breed>> snapshot) {
+        if (!snapshot.hasData) return _emptyContainer();
 
-          final breed = snapshot.data!;
-
-          return ListView.builder(
-            itemCount: breed.length,
-            itemBuilder: ( _, int index ) => _CatItem( breed[index])
-          );
-        },
-      );
-     */
+        final breed = snapshot.data!;
+        // return ListView.builder(
+        //   itemCount: breed.length,
+        //   itemBuilder: ( _, int index ) => _CatItem( breed[index])
+        // );
+        // ignore: avoid_unnecessary_containers
+        return Container(child: _CatItem(breed));
+      },
+    );
   }
 }
 
@@ -103,9 +101,5 @@ class _CatItem extends StatelessWidget {
 
 
 /*
-
-AYUAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-
-
-
+funcionalidad provider no se acopla
 */ 

@@ -9,40 +9,48 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
           title: Text("Your cat is ${minino.name}"),
           elevation: 0,
         ),
-        body: CustomScrollView(
-          slivers: [
-            SliverList(
-                delegate: SliverChildListDelegate([
-              _TarjetaImagen(minino),
-              const Divider(),
-              _TarjetaDescription(minino),
-              const Divider(),
-              _TarjetaTemperament(minino),
-              const Divider(),
-              _TarjetaOrigen(minino),
-              const Divider(),
-              _TarjetaCountryCodes(minino),
-              const Divider(),
-              _TarjetaPuntuacionesDog(minino),
-              const Divider(),
-              _TarjetaPuntuacionesBaby(minino),
-              const Divider(),
-              _TarjetaPuntuacionesEnergy(minino),
-              const Divider(),
-              _TarjetaPuntuacionesGrooming(minino),
-              const Divider(),
-              _TarjetaPuntuacionesHealth(minino),
-              const Divider(),
-              _TarjetaPuntuacionesInteligent(minino),
-              const Divider(),
-            ])),
-          ],
-        ));
+        body: Column(children: [
+          SizedBox(
+            width: size.width,
+            height: size.height * 0.3,
+            child: _TarjetaImagen(minino),
+          ),
+          SizedBox(
+              width: double.infinity,
+              height: size.height * 0.50,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    _TarjetaDescription(minino),
+                    const Divider(),
+                    _TarjetaTemperament(minino),
+                    const Divider(),
+                    _TarjetaOrigen(minino),
+                    const Divider(),
+                    _TarjetaCountryCodes(minino),
+                    const Divider(),
+                    _TarjetaPuntuacionesDog(minino),
+                    const Divider(),
+                    _TarjetaPuntuacionesBaby(minino),
+                    const Divider(),
+                    _TarjetaPuntuacionesEnergy(minino),
+                    const Divider(),
+                    _TarjetaPuntuacionesGrooming(minino),
+                    const Divider(),
+                    _TarjetaPuntuacionesHealth(minino),
+                    const Divider(),
+                    _TarjetaPuntuacionesInteligent(minino),
+                    const Divider(),
+                  ],
+                ),
+              ))
+        ]));
   }
 }
 
