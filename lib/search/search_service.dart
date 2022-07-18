@@ -1,12 +1,9 @@
-import 'package:cat_aplication/search/search.dart';
-import 'package:cat_aplication/search/search_response.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'search.dart';
 
 class CatSearchDelegate extends SearchDelegate {
   @override
-  String get searchFieldLabel => "  Search for a kitten <3";
-
+  String get searchFieldLabel => "  Search Cat";
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -29,7 +26,40 @@ class CatSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return const Text("searching michi...");
+    // ignore: prefer_is_empty
+    if (query.length == 0) {
+      // ignore: avoid_unnecessary_containers
+      return Container(
+        child: const Center(
+          child: Icon(
+            Icons.question_mark_sharp,
+            color: Colors.black38,
+            size: 150,
+          ),
+        ),
+      );
+    }
+    // ignore: avoid_print, unnecessary_new
+    final breedsService = new BreedsService();
+
+    return FutureBuilder(
+      future: breedsService.getBreedsByName(query),
+      builder: (_, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+
+          return _ShowMeCats(snapshot.data);
+
+        } else if (!snapshot.hasData || snapshot.hasError) {
+
+          return _NotCats();
+
+        } else {
+
+          return const Center(
+              child: CircularProgressIndicator(strokeWidth: 10));
+        }
+      },
+    );
   }
 
   Widget _emptyContainer() {
@@ -47,61 +77,63 @@ class CatSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    if (query.isEmpty) {
-      return _emptyContainer();
-    }
-     return _emptyContainer();
-    /*
-    final breedsService = Provider.of<BreedsService>(context, listen: false);
-    breedsService.getSuggestionsByQuery(query);
+    return _emptyContainer();
+  }
+//-------------------------- // fin del search delegate // -------------------
 
-    return StreamBuilder(
-      stream: breedsService.suggestionStream,
-      builder: (_, AsyncSnapshot<List<Breed>> snapshot) {
-        if (!snapshot.hasData) return _emptyContainer();
-
-        final breed = snapshot.data!;
-        // return ListView.builder(
-        //   itemCount: breed.length,
-        //   itemBuilder: ( _, int index ) => _CatItem( breed[index])
-        // );
-        // ignore: avoid_unnecessary_containers
-        return Container(child: _CatItem(breed));
+  // ignore: non_constant_identifier_names
+  Widget _ShowMeCats(breeds) {
+    return ListView.builder(
+      itemCount: breeds?.length,
+      itemBuilder: (context, i) {
+        final breend = breeds[i];
+        // print(breend.name);
+        return ListTile(
+            leading: const Icon(Icons.pets),
+            title: Text(breend.name),
+            subtitle: Text("Country of origin ${breend.name}"),
+            // ignore: prefer_interpolation_to_compose_strings
+            trailing: Text("Code country from " + breend.countryCode),
+            onTap: () {
+              close(context, breeds);
+            });
       },
     );
-    */
+  }
+
+  // ignore: non_constant_identifier_names
+  Widget _NotCats() {
+    // ignore: avoid_unnecessary_containers
+    return Container(
+      child: const Center(child: Text('I cant find the Michi')),
+    );
   }
 }
 
-class _CatItem extends StatelessWidget {
-  // ignore: prefer_typing_uninitialized_variables
-  final breed;
+/*
 
-  const _CatItem(this.breed);
+class _NewItemCat extends StatelessWidget {
+  final List<Breeds> breed;
+  const _NewItemCat(this.breed);
 
   @override
   Widget build(BuildContext context) {
-    breed.name = 'search-${breed.name}';
+    breed.id = 'search-${breed.id}';
 
     return ListTile(
       leading: Hero(
-        tag: breed.name,
+        tag: breed.id,
         child: FadeInImage(
-          placeholder: const AssetImage('assets/no-image.jpg'),
-          image: NetworkImage("${breed.image}"),
+          placeholder: const AssetImage('assets/img/no-image.jpg'),
+          image: NetworkImage(breed.referenceImageId),
           width: 50,
           fit: BoxFit.contain,
         ),
       ),
       title: Text(breed.name),
-      onTap: () {
-        Navigator.pushNamed(context, 'details', arguments: breed);
-      },
+      subtitle: Text(breed.origin),
     );
   }
 }
 
-
-/*
-funcionalidad provider no se acopla
-*/ 
+*/

@@ -4,7 +4,6 @@ import 'package:cat_aplication/models/cats_models.dart';
 
 class CatPreview extends StatelessWidget {
   final List<Cat>? minino;
-
   // ignore: use_key_in_widget_constructors
   const CatPreview(this.minino);
 
@@ -88,7 +87,7 @@ class _TarjetaTitulo extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Text(
-        "Name of breed: ${minino.name}.",
+        "Breed: ${minino.name}      More...",
         style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
       ),
     );
