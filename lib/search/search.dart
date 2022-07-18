@@ -17,7 +17,7 @@ class BreedsService {
       final resp = await _dio.get(url);
 
       final List<dynamic> breedsList = resp.data;
-      print(breedsList);
+      //print(breedsList);
       return breedsList.map((obj) => Breeds.fromJson(obj)).toList();
     } catch (e) {
       return [];
